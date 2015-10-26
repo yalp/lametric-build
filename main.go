@@ -69,11 +69,13 @@ func updateLametricApp(t *TravisPayload, c *CoverallsPayload) {
 	app := App{
 		Frames: []Frame{
 			Frame{
-				Text: t.Branch + ":" + t.StatusMessage,
-				Icon: statusIcon(t.Status),
+				Index: 0,
+				Text:  t.Branch + ":" + t.StatusMessage,
+				Icon:  statusIcon(t.Status),
 			},
 			Frame{
-				Icon: coverageIcon(c.Coverage),
+				Index: 1,
+				Icon:  coverageIcon(c.Coverage),
 				GoalData: &Goal{
 					End:     100,
 					Current: int(c.Coverage + 0.5), // round
@@ -81,8 +83,9 @@ func updateLametricApp(t *TravisPayload, c *CoverallsPayload) {
 				},
 			},
 			Frame{
-				Text: progressLabel(c.Delta) + "%",
-				Icon: progressIcon(c.Delta),
+				Index: 2,
+				Text:  progressLabel(c.Delta) + "%",
+				Icon:  progressIcon(c.Delta),
 			},
 		},
 	}
