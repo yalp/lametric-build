@@ -35,11 +35,11 @@ var coverChan chan *CoverallsPayload
 
 func coverageIcon(coverage float64) string {
 	if coverage > 90 {
-		return "i275" // green
+		return "i667" // green
 	} else if coverage > 80 {
-		return "i654" // orange
+		return "i665" // orange
 	}
-	return "i259" // red
+	return "i660" // red
 }
 
 func progressLabel(delta float64) string {
@@ -70,7 +70,7 @@ func updateLametricApp(t *TravisPayload, c *CoverallsPayload) {
 		Frames: []Frame{
 			Frame{
 				Index: 0,
-				Text:  t.Branch + ":" + t.StatusMessage,
+				Text:  t.Branch + ": " + t.StatusMessage,
 				Icon:  statusIcon(t.Status),
 			},
 			Frame{
